@@ -28,18 +28,18 @@ from new.metrics import R1_mAP_eval
 
 
 parser = argparse.ArgumentParser(description='PyTorch Cross-Modality Training')
-parser.add_argument('--dataset', default='msmt17', help='dataset name: regdb or sysu]')
+parser.add_argument('--dataset', default='', help='dataset name]')
 parser.add_argument('--lr', default=0.0004 , type=float, help='learning rate, 0.00035 for adam')
 parser.add_argument('--optim', default='adamw', type=str, help='optimizer')
 parser.add_argument('--resume', '-r', default='', type=str,
                     help='resume from checkpoint')
-parser.add_argument('--model_path', default='/home/jiaqi/Baseline2pre/save_model/', type=str,
+parser.add_argument('--model_path', default='', type=str,
                     help='model save path')
 parser.add_argument('--save_epoch', default=10, type=int,
                     metavar='s', help='save model every 10 epochs')
-parser.add_argument('--log_path', default='/home/jiaqi/Baseline2pre/log/', type=str,
+parser.add_argument('--log_path', default='', type=str,
                     help='log save path')
-parser.add_argument('--vis_log_path', default='/home/jiaqi/Baseline2pre/log/vis_log/', type=str,
+parser.add_argument('--vis_log_path', default='', type=str,
                     help='log save path')
 parser.add_argument('--workers', default=4, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
@@ -69,15 +69,9 @@ os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 set_seed(args.seed)
 
 dataset = args.dataset
-if dataset == 'sysu':
-    data_path = '/mnt/data/ljq/SYSU-MM01/'
-    log_path = args.log_path + 'sysu_log/'
 
-elif dataset == 'regdb':
-    data_path = '/mnt/data/ljq/RegDB/'
-    log_path = args.log_path + 'regdb_log/'
     
-elif dataset == 'msmt17':
+if dataset == 'msmt17':
     data_path = '/mnt/backup/qingjie/data/MSMT17_V1/'
     log_path = args.log_path + 'msmt17_log/'   
      
@@ -100,9 +94,6 @@ suffix = suffix + 'lr_{}_time_{}'.format(args.lr, cur_time)
 
 if not args.optim == 'sgd':
     suffix = suffix + '_' + args.optim
-
-if dataset == 'regdb':
-    suffix = suffix + '_trial_{}'.format(args.trial)
 
 sys.stdout = Logger(log_path + suffix + '_os.txt')
 
@@ -298,7 +289,6 @@ def train(epoch):
     writer.add_scalar('lr', current_lr, epoch)
     
 
-
 def test(epoch):
     net.eval()
     print('Extracting Gallery Feature...')
@@ -322,9 +312,6 @@ def test(epoch):
  #   writer.add_scalar('mINP', mINP, epoch)
 
     return cmc, mAP
-
-
-
 
 # training
 print('==> Start Training...')
