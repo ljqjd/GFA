@@ -4,10 +4,10 @@ cfg = CN()
 cfg.SEED = 0
 
 # dataset
-cfg.DATASET = 'sysu'    # sysu or regdb
-cfg.DATA_PATH_SYSU = '/mnt/data/ljq/SYSU-MM01/'
-cfg.DATA_PATH_RegDB = '/mnt/data/ljq/RegDB/'
-cfg.PRETRAIN_PATH = '/home/jiaqi/Baseline/jx_vit_base_p16_224-80ecf9dd.pth'
+cfg.DATASET = ''    
+cfg.DATA_PATH_SYSU = ''
+cfg.DATA_PATH_RegDB = ''
+cfg.PRETRAIN_PATH = ''
 
 cfg.START_EPOCH = 1
 cfg.MAX_EPOCH = 24
@@ -18,10 +18,8 @@ cfg.BATCH_SIZE = 8  # num of images for each modality in a mini batch
 cfg.NUM_POS = 4
 
 # PMT
-cfg.METHOD ='PMT'
+cfg.METHOD =''
 cfg.PL_EPOCH = 6    # for PL strategy
-cfg.MSEL = 0.5      # weight for MSEL
-cfg.DCL = 0.5       # weight for DCL
 cfg.MARGIN = 0.1    # margin for triplet
 
 
@@ -65,7 +63,7 @@ _C.MODEL.DEVICE = "cuda"
 # ID number of GPU
 _C.MODEL.DEVICE_ID = '1'
 # Name of backbone
-_C.MODEL.NAME = 'resnet50'
+_C.MODEL.NAME = ''
 # Last stride of backbone
 _C.MODEL.LAST_STRIDE = 1
 # Path to pretrained model of backbone
@@ -153,9 +151,9 @@ _C.INPUT.FEATURE_REG = False
 # -----------------------------------------------------------------------------
 _C.DATASETS = CN()
 # List of the dataset names for training, as present in paths_catalog.py
-_C.DATASETS.NAMES = ('msmt17')
+_C.DATASETS.NAMES = ('')
 # Root directory where datasets should be used (and downloaded if not found)
-_C.DATASETS.ROOT_DIR = ('/mnt/backup/qingjie/data/MSMT17_V1')
+_C.DATASETS.ROOT_DIR = ('')
 
 # -----------------------------------------------------------------------------
 # DataLoader
@@ -251,6 +249,7 @@ _C.TEST.AUGMENT = False
 # ---------------------------------------------------------------------------- #
 # Path to checkpoint and saved log of trained model
 _C.OUTPUT_DIR = ""
+
 
 
 
