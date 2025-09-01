@@ -11,18 +11,13 @@ import torch.utils.data as data
 import torchvision
 import torchvision.transforms as transforms
 from torchvision.transforms import *
-from data_loader import SYSUData, RegDBData, TestData
+from data_loader import TestData
 from data_manager import *
-from eval_metrics import eval_sysu, eval_regdb
 from utils import *
-from loss.TripletLoss import OriTripletLoss, TripletLoss_WRT, OriTripletLoss1
-#from loss.CenterTripletLoss import CenterTripletLoss
-#from loss.DiscriminativeCenterLoss import DCL
-from loss.CenterLoss import CenterLoss
 from tensorboardX import SummaryWriter
 from model.make_model import build_vision_transformer
 from config.config import cfg,_C
-from transformers import transform_rgb, transformaa, transform_thermal, transform_test
+from transformers import transform_rgb, transform_thermal, transform_test
 from new.make_dataloader import make_dataloader
 from new.metrics import R1_mAP_eval
 
