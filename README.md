@@ -6,4 +6,4 @@ The obtained model should then be formally trained using GFA
 
 checkpoint：
 https://pan.baidu.com/s/1Ew8WKPxojLFVHNb3HY0i5A
-ci9x
+code:ci9x
