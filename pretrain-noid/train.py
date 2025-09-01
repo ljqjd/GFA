@@ -30,18 +30,18 @@ from new.metrics import R1_mAP_eval
 
 
 parser = argparse.ArgumentParser(description='PyTorch Cross-Modality Training')
-parser.add_argument('--dataset', default='msmt17', help='dataset name: regdb or sysu]')
+parser.add_argument('--dataset', default='', help='dataset name]')
 parser.add_argument('--lr', default=0.000004 , type=float, help='learning rate, 0.00035 for adam')
 parser.add_argument('--optim', default='adamw', type=str, help='optimizer')
-parser.add_argument('--resume', '-r', default='msmt17lr_0.0004_time_20250103_171740_adamw_epoch_100.t', type=str,
+parser.add_argument('--resume', '-r', default='', type=str,
                     help='resume from checkpoint')
-parser.add_argument('--model_path', default='/home/jiaqi/Baseline2noid/save_model/', type=str,
+parser.add_argument('--model_path', default='', type=str,
                     help='model save path')
 parser.add_argument('--save_epoch', default=10, type=int,
                     metavar='s', help='save model every 10 epochs')
-parser.add_argument('--log_path', default='/home/jiaqi/Baseline2noid/log/', type=str,
+parser.add_argument('--log_path', default='', type=str,
                     help='log save path')
-parser.add_argument('--vis_log_path', default='/home/jiaqi/Baseline2noid/log/vis_log/', type=str,
+parser.add_argument('--vis_log_path', default='', type=str,
                     help='log save path')
 parser.add_argument('--workers', default=4, type=int, metavar='N',
                     help='number of data loading workers (default: 4)')
@@ -71,15 +71,7 @@ os.environ['CUDA_VISIBLE_DEVICES'] = args.gpu
 set_seed(args.seed)
 
 dataset = args.dataset
-if dataset == 'sysu':
-    data_path = '/mnt/data/ljq/SYSU-MM01/'
-    log_path = args.log_path + 'sysu_log/'
-
-elif dataset == 'regdb':
-    data_path = '/mnt/data/ljq/RegDB/'
-    log_path = args.log_path + 'regdb_log/'
-    
-elif dataset == 'msmt17':
+if dataset == 'msmt17':
     data_path = '/mnt/backup/qingjie/data/MSMT17_V1/'
     log_path = args.log_path + 'msmt17_log/'   
      
